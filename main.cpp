@@ -1,169 +1,61 @@
-// ConsoleApplication1.cpp: определяет точку входа для консольного приложения. 
-//
-
-#include "stdafx.h" 
+#include "stdafx.h"
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
-int sum(int x, int y) 
-{ 
-  return x + y; 
-} 
-
-int minu(int x, int y) 
-{ 
-  return x - y; 
-} 
-
-int mul(int x, int y) 
-{   
-  return x*y; 
-} 
-
-int del(int x, int y) 
+int main()
 {
-  return x / y;
-} 
-
-int ost(int x, int y) 
-{ 
-  return x%y; 
-} 
-
-int logumn(int x, int y) 
-{ 
-  return x&y; 
-} 
-
-int logsum(int x, int y) 
-{ 
-  return x | y; 
-} 
-
-int xr(int x, int y) 
-{ 
-  return x^y; 
-} 
-int sdvigleft(int x, int y) 
-{ 
-  return x << y; 
-} 
-int sdvigright(int x, int y) 
-{ 
-  return x >> y; 
-}
-
-int main() { int res, x, y, p; p = 0; y = 0; char op;
-
-cin >> x;
-cin >> op;
-
-if (op == ' ')
-{
-	cin >> op;
-	if (op == '>' || op == '<')
-	{
-		cin >> op;
-	}
-}
-else if (op == '>' || op == '<')
-{
-	cin >> op;
-}
-
-if (op == '+')
-{
-	if (y == 0 && p == 0)
-	{
+	int x, y, r;
+	char op1, op2;
+	cin >> x;
+	cin >> op1;
+	if ((op1 == '>') || (op1 == '<')) {
+		cin >> op2;
 		cin >> y;
 	}
-	res = sum(x, y);
-	cout << res << endl;
-}
-else if (op == '-')
-{
-	if (y == 0 && p == 0)
-	{
+	else {
 		cin >> y;
 	}
-	res = minu(x, y);
-	cout << res << endl;
-}
-else if (op == '*')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	if (op1 == '+') {
+		r = x + y;
 	}
-	res = mul(x, y);
-	cout << res << endl;
-}
-else if (op == '/')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	else if (op1 == '-') {
+		r = x - y;
 	}
-	if (y != 0) {
-		res = del(x, y);
-		cout << res << endl;
+	else if (op1 == '*') {
+		r = x*y;
 	}
-	else { cout << "wrong input \n"; }
-}
-else if (op == '&')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	else if (op1 == '/') {
+		if (y == 0) {
+			cout << "wrong operation";
+			return -1;
+		}
+		else r = x / y
+			;
 	}
-	res = logumn(x, y);
-	cout << res << endl;
-}
-else if (op == '%')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	else if ((op1 == '<') && (op2 == '<')) {
+		r = x << y;
 	}
-	res = ost(x, y);
-	cout << res << endl;
-}
-else if (op == '|')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	else if ((op1 == '>') && (op2 == '>')) {
+		r = x >> y;
 	}
-	res = logsum(x, y);
-	cout << res << endl;
-}
-else if (op == '^')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	else if (op1 == '&') {
+		r = x&y;
 	}
-	res = xr(x, y);
-	cout << res << endl;
-}
-else if (op == '<')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	else if (op1 == '|') {
+		r = x | y;
 	}
-	res = sdvigleft(x, y);
-	cout << res << endl;
-}
-else if (op == '>')
-{
-	if (y == 0 && p == 0)
-	{
-		cin >> y;
+	else if (op1 == '^') {
+		r = x^y;
 	}
-	res = sdvigright(x, y);
-	cout << res << endl;
-}
-system("pause");
-return 0;
+	else if (op1 == '%') {
+		r = x%y;
+	}
+	else {
+		cout << "wrong operation";
+		return -1;
+	}
+	cout << "result: " << r << endl;
+	system("pause");
+	return 0;
 }
